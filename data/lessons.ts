@@ -33,7 +33,7 @@ export const lessons: Lesson[] = [
       'Think of chipmaking like finding dust on a mirror the size of a football field. ASU teams are training AI to spot tiny defects faster so engineers can react before yields drop.',
     paragraph2:
       'The Applied Materials collaboration brings imaging and analytics methods from health tech into semiconductor inspection. The goal is cleaner data, earlier fault detection and faster factory decisions.',
-    tags: ['#ai', '#chips', '#manufacturing'],
+    tags: ['#ai', '#research', '#innovation'],
     readTimeSeconds: 36,
     imageUrl: 'https://news.asu.edu/sites/default/files/2025-06/SCAI-Baoxin-Li-2025-EG-5920-a_1920x1080.jpg',
     imageCredit: 'ASU News',
@@ -48,7 +48,7 @@ export const lessons: Lesson[] = [
       'Freeway plants are city infrastructure, but irrigation is often guesswork. ASU is helping Arizona turn that guesswork into measured, site-specific watering plans.',
     paragraph2:
       'The project with ADOT tracks landscape water use and identifies where less water can keep plants healthy. It is part of the Arizona Water Innovation Initiative focused on long-term desert resilience.',
-    tags: ['#water', '#phoenix', '#sustainability'],
+    tags: ['#water', '#sustainability', '#innovation'],
     readTimeSeconds: 34,
     imageUrl: 'https://news.asu.edu/sites/default/files/2026-03/ASU%20News%20header.jpg',
     imageCredit: 'ASU News',
@@ -80,7 +80,7 @@ export const lessons: Lesson[] = [
       'The discovery shows how humanities research works like historical detective work, adding evidence piece by piece. New primary sources can reshape how major authors are taught and interpreted.',
     tags: ['#literature', '#austen', '#research'],
     readTimeSeconds: 29,
-    imageUrl: 'https://news.asu.edu/sites/default/files/styles/block_image_16_9_lge/public/20180410devoneylooser_06_1.jpg',
+    imageUrl: 'https://news.asu.edu/sites/default/files/2025-08/Looser_for%20ASUNews.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20250826-arts-humanities-and-education-jane-austen-more-wild-people-realize-says-asu-professor',
     publishedAgo: '11y ago'
@@ -108,7 +108,7 @@ export const lessons: Lesson[] = [
       'College momentum often starts before college. ASU partners are scaling dual enrollment so more students can earn credits early and lower time-to-degree later.',
     paragraph2:
       'At the Accelerate ASU conference, educators focused on access across districts and student pathways. The push aligns with evidence that dual-enrollment students are more likely to attend and complete college.',
-    tags: ['#k12', '#collegeaccess', '#dualenrollment'],
+    tags: ['#k12', '#collegeaccess', '#studentsuccess'],
     readTimeSeconds: 33,
     imageUrl: 'https://news.asu.edu/sites/default/files/2026-03/Hero%20photo%20-%20Accelerate%20partner%20conference.png',
     imageCredit: 'ASU News',
@@ -123,7 +123,7 @@ export const lessons: Lesson[] = [
       'Arizona’s water story starts far from Arizona, in mountain snow. ASU and SRP are using airborne surveys to measure snowpack with greater precision.',
     paragraph2:
       'Better snow data helps reservoir operators forecast runoff and plan supplies with less uncertainty. The project combines federal support, utility operations and university hydrology expertise.',
-    tags: ['#snowpack', '#waterforecasting', '#coloradoriver'],
+    tags: ['#snowpack', '#waterforecasting', '#water'],
     readTimeSeconds: 32,
     imageUrl: 'https://news.asu.edu/sites/default/files/2026-01/1920_a2_01080%20%281%29%202.jpg',
     imageCredit: 'ASU News',
@@ -138,7 +138,7 @@ export const lessons: Lesson[] = [
       'Imagine freezing biology mid-motion to inspect it frame by frame. ASU scientists use a specialized cryo-electron microscope to study cells and molecular structures in extreme detail.',
     paragraph2:
       'The instrument supports researchers across disciplines by making ultra-small structures visible without traditional staining limits. That visibility helps speed discoveries in biology and biomedicine.',
-    tags: ['#microscopy', '#biotech', '#discovery'],
+    tags: ['#microscopy', '#biotech', '#research'],
     readTimeSeconds: 35,
     imageUrl: 'https://news.asu.edu/sites/default/files/semte-brent-nannenga-2020-eg-2649w-scaled_0.jpg',
     imageCredit: 'ASU News',
@@ -198,7 +198,7 @@ export const lessons: Lesson[] = [
       'ASU is exporting its learning model by building a stronger U.K. footprint. The new ASU London launch expands project-based degrees tied to global employability.',
     paragraph2:
       'Students can combine a U.K. bachelor’s path with an accelerated ASU master’s track. The structure is meant to cut time and cost while offering cross-border academic experience.',
-    tags: ['#globaleducation', '#london', '#degrees'],
+    tags: ['#globaleducation', '#london', '#innovation'],
     readTimeSeconds: 40,
     imageUrl: 'https://news.asu.edu/sites/default/files/2025-11/20251105_ASU_L_ASUNEWS_Hero%20%281%29.png',
     imageCredit: 'ASU News',

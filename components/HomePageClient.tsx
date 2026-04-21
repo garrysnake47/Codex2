@@ -142,13 +142,17 @@ export default function HomePage() {
           <p className="mb-6 text-[11px] uppercase tracking-[0.12em] text-ink/55">Trending tags on ASU</p>
           <div className="flex flex-wrap items-end gap-x-5 gap-y-3">
             {tagCounts.map(([tag, count], idx) => {
-              const size = count >= 3 ? 'text-[34px]' : count === 2 ? 'text-[24px]' : 'text-[18px]';
+              const max = tagCounts[0]?.[1] ?? 1;
+              const min = tagCounts[tagCounts.length - 1]?.[1] ?? 1;
+              const normalized = max === min ? 0.55 : (count - min) / (max - min);
+              const fontSize = Math.round(14 + normalized * 22);
               const topColor = ['text-maroon', 'text-blue-600', 'text-purple-600', 'text-green-600'][idx] ?? 'text-ink/60';
               return (
                 <Link
                   key={tag}
                   href={`/topics?tag=${encodeURIComponent(tag)}`}
-                  className={`${size} ${topColor} px-1 font-medium leading-none transition-colors hover:text-maroon`}
+                  className={`${topColor} px-1 font-medium leading-none transition-colors hover:text-maroon`}
+                  style={{ fontSize: `${fontSize}px` }}
                 >
                   {tag}
                 </Link>
