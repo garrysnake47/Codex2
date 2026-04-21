@@ -23,8 +23,6 @@ export type Lesson = {
   publishedAgo: string;
 };
 
-const imageFor = (category: LessonCategory) =>
-  `https://placehold.co/800x400/E6F1FB/185FA5?text=${encodeURIComponent(category)}`;
 
 export const lessons: Lesson[] = [
   {
@@ -37,7 +35,7 @@ export const lessons: Lesson[] = [
       'The Applied Materials collaboration brings imaging and analytics methods from health tech into semiconductor inspection. The goal is cleaner data, earlier fault detection and faster factory decisions.',
     tags: ['#ai', '#chips', '#manufacturing'],
     readTimeSeconds: 36,
-    imageUrl: imageFor('Science & Tech'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2025-06/SCAI-Baoxin-Li-2025-EG-5920-a_1920x1080.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20250616-science-and-technology-aipowered-smart-medicine-meets-smart-microchips',
     publishedAgo: '10mo ago'
@@ -52,7 +50,7 @@ export const lessons: Lesson[] = [
       'The project with ADOT tracks landscape water use and identifies where less water can keep plants healthy. It is part of the Arizona Water Innovation Initiative focused on long-term desert resilience.',
     tags: ['#water', '#phoenix', '#sustainability'],
     readTimeSeconds: 34,
-    imageUrl: imageFor('Environment'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2026-03/ASU%20News%20header.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20260305-environment-and-sustainability-asu-partnership-helps-adot-optimize-water-use-across-urban-freeways',
     publishedAgo: '1mo ago'
@@ -67,7 +65,7 @@ export const lessons: Lesson[] = [
       'The team says this adds urgency because many Americans do not hit recommended choline intake. Their findings support more prevention-focused nutrition conversations before symptoms escalate.',
     tags: ['#alzheimers', '#nutrition', '#brainhealth'],
     readTimeSeconds: 31,
-    imageUrl: imageFor('Health'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/styles/block_image_16_9_lge/public/13d9bb8b-156c-404e-b8ff-cd43e700a187.jpg?itok=XbhyKWdg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20230807-new-research-links-low-choline-levels-blood-alzheimers-disease-progression',
     publishedAgo: '2y ago'
@@ -82,9 +80,9 @@ export const lessons: Lesson[] = [
       'The discovery shows how humanities research works like historical detective work, adding evidence piece by piece. New primary sources can reshape how major authors are taught and interpreted.',
     tags: ['#literature', '#austen', '#research'],
     readTimeSeconds: 29,
-    imageUrl: imageFor('Humanities'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2025-08/Looser_for%20ASUNews.jpg',
     imageCredit: 'ASU News',
-    sourceUrl: 'https://news.asu.edu/content/asu-english-scholar-sheds-light-jane-austen-letters',
+    sourceUrl: 'https://news.asu.edu/20250826-arts-humanities-and-education-jane-austen-more-wild-people-realize-says-asu-professor',
     publishedAgo: '11y ago'
   },
   {
@@ -97,7 +95,7 @@ export const lessons: Lesson[] = [
       'Leaders report the project is about one-third complete and designed for long-run job creation and wage growth. It also reflects a shift toward mixed-use spaces that match hybrid work patterns.',
     tags: ['#innovation', '#economicdevelopment', '#tempe'],
     readTimeSeconds: 38,
-    imageUrl: imageFor('Business'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2025-06/20250218%20TempeDroneNovusPlaceWaltonCenter_010.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20250627-sun-devil-community-asu-thriving-live-work-play-community-novus',
     publishedAgo: '9mo ago'
@@ -112,7 +110,7 @@ export const lessons: Lesson[] = [
       'At the Accelerate ASU conference, educators focused on access across districts and student pathways. The push aligns with evidence that dual-enrollment students are more likely to attend and complete college.',
     tags: ['#k12', '#collegeaccess', '#dualenrollment'],
     readTimeSeconds: 33,
-    imageUrl: imageFor('Campus'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2026-03/Hero%20photo%20-%20Accelerate%20partner%20conference.png',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20260313-arts-humanities-and-education-accelerate-asu-partners-expand-dual-enrollment-high-school-students',
     publishedAgo: '1mo ago'
@@ -127,7 +125,7 @@ export const lessons: Lesson[] = [
       'Better snow data helps reservoir operators forecast runoff and plan supplies with less uncertainty. The project combines federal support, utility operations and university hydrology expertise.',
     tags: ['#snowpack', '#waterforecasting', '#coloradoriver'],
     readTimeSeconds: 32,
-    imageUrl: imageFor('Environment'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2026-01/1920_a2_01080%20%281%29%202.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20260121-environment-and-sustainability-asu-srp-project-takes-flight-improve-water-supply',
     publishedAgo: '3mo ago'
@@ -142,7 +140,7 @@ export const lessons: Lesson[] = [
       'The instrument supports researchers across disciplines by making ultra-small structures visible without traditional staining limits. That visibility helps speed discoveries in biology and biomedicine.',
     tags: ['#microscopy', '#biotech', '#discovery'],
     readTimeSeconds: 35,
-    imageUrl: imageFor('Science & Tech'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/semte-brent-nannenga-2020-eg-2649w-scaled_0.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20211116-discoveries-freeze-frame-scientists-use-new-electron-microscope-cryo-em-explore-mysteries',
     publishedAgo: '4y ago'
@@ -157,7 +155,7 @@ export const lessons: Lesson[] = [
       'The alliance adds routes for clinical immersion, entrepreneurship and design-center prototyping. It is designed to move ideas from concept to patient-centered solutions faster.',
     tags: ['#biomedical', '#mayo', '#healthinnovation'],
     readTimeSeconds: 37,
-    imageUrl: imageFor('Health'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2024-10/SBHSE-Mayo-2024-EG-0384-a%20%285%29.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20241101-health-and-medicine-asu-mayo-clinic-forge-new-health-innovation-program',
     publishedAgo: '1y ago'
@@ -172,7 +170,7 @@ export const lessons: Lesson[] = [
       'One featured student connected sustainability and social justice through interdisciplinary study. The story underscores ASU’s broader first-gen support ecosystem and identity-affirming programs.',
     tags: ['#firstgen', '#studentsuccess', '#mentorship'],
     readTimeSeconds: 30,
-    imageUrl: imageFor('Campus'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/styles/quarter_width/public/2024-11/mauricio_0_0.jpeg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20241107-sun-devil-community-asu-firstgen-college-student-leader-sustainability-social-justice',
     publishedAgo: '1y ago'
@@ -187,7 +185,7 @@ export const lessons: Lesson[] = [
       'The approach now extends beyond ASU into K–12 classrooms, where mobile and fixed labs support biology instruction. Early reports highlight stronger attention and hands-on participation.',
     tags: ['#vrlearning', '#edtech', '#classroominnovation'],
     readTimeSeconds: 39,
-    imageUrl: imageFor('Humanities'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2025-11/20251119%20DreamscapeLearnMobilePodPendergastElementary_0105.jpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20251120-science-and-technology-asu-dreamscape-learn-bring-immersive-vr-biology-classrooms-phoenix',
     publishedAgo: '5mo ago'
@@ -202,7 +200,7 @@ export const lessons: Lesson[] = [
       'Students can combine a U.K. bachelor’s path with an accelerated ASU master’s track. The structure is meant to cut time and cost while offering cross-border academic experience.',
     tags: ['#globaleducation', '#london', '#degrees'],
     readTimeSeconds: 40,
-    imageUrl: imageFor('Business'),
+    imageUrl: 'https://news.asu.edu/sites/default/files/2025-11/20251105_ASU_L_ASUNEWS_Hero%20%281%29.png',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20251120-university-news-asu-launches-asu-london-bringing-global-reputation-innovation-uk',
     publishedAgo: '5mo ago'

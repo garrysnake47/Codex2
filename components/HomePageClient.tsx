@@ -110,16 +110,16 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="mt-8 flex items-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             onClick={nextLesson}
-            className="rounded-full bg-ink px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="rounded-full bg-ink px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-5"
           >
             Next ↓
           </button>
           <button
             onClick={() => toggleSave(lesson.id)}
-            className="rounded-full border border-black/20 px-4 py-2 text-sm text-ink/75"
+            className="rounded-full border border-black/20 px-3 py-2 text-sm text-ink/75 sm:px-4"
           >
             {savedIds.includes(lesson.id) ? 'Saved' : 'Save'}
           </button>
@@ -127,11 +127,11 @@ export default function HomePage() {
             href={lesson.sourceUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-black/20 px-4 py-2 text-sm text-ink/75"
+            className="rounded-full border border-black/20 px-3 py-2 text-sm text-ink/75 sm:px-4"
           >
             Read full ↗
           </a>
-          <p className="ml-auto text-sm text-ink/50">
+          <p className="w-full text-right text-sm text-ink/50 sm:ml-auto sm:w-auto">
             {currentIndex + 1} / {lessons.length}
           </p>
         </div>
@@ -148,7 +148,7 @@ export default function HomePage() {
                 <Link
                   key={tag}
                   href={`/topics?tag=${encodeURIComponent(tag)}`}
-                  className={`${size} ${topColor} rounded-full border border-black/10 bg-white px-3 py-1 font-medium leading-none`}
+                  className={`${size} ${topColor} px-1 font-medium leading-none transition-colors hover:text-maroon`}
                 >
                   {tag}
                 </Link>
@@ -161,7 +161,7 @@ export default function HomePage() {
       <section className="py-12">
         <div className="mx-auto max-w-6xl px-4">
           <p className="mb-6 text-[11px] uppercase tracking-[0.12em] text-ink/55">Topics</p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categoryStats.map((stat) => (
               <Link
                 key={stat.category}

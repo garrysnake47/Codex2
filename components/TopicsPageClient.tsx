@@ -70,7 +70,7 @@ export default function TopicsPage() {
           <p className="mb-4 text-[11px] uppercase tracking-[0.12em] text-ink/55">
             {filteredLessons.length} lessons available
           </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filteredLessons.map((lesson) => (
               <LessonCard key={lesson.id} lesson={lesson} />
             ))}
