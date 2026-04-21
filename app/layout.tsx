@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'SparkNotes · ASU Edition',
+  title: 'ASU Smart Content Hub',
   description: 'Auto-learning hub for bite-sized ASU story lessons.'
 };
 

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Lesson } from '@/data/lessons';
 
@@ -12,7 +11,7 @@ export function LessonCard({ lesson }: LessonCardProps) {
       href={`/?id=${lesson.id}`}
       className="overflow-hidden rounded-xl border border-black/10 bg-white transition-colors hover:border-maroon/40"
     >
-      <Image src={lesson.imageUrl} alt={lesson.headline} width={800} height={400} className="h-44 w-full object-cover" />
+      <img src={lesson.imageUrl} alt={lesson.headline} className="h-44 w-full object-cover" loading="lazy" />
       <div className="space-y-2 p-4">
         <p className="text-[11px] uppercase tracking-[0.12em] text-maroon">{lesson.category}</p>
         <h3 className="text-lg font-medium leading-snug text-ink">{lesson.headline}</h3>

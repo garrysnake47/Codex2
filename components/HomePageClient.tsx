@@ -1,7 +1,6 @@
 'use client';
 
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -91,7 +90,7 @@ export default function HomePage() {
         </p>
         <h1 className="mb-6 text-[32px] font-medium leading-tight tracking-[-0.02em]">{lesson.headline}</h1>
 
-        <Image src={lesson.imageUrl} alt={lesson.headline} width={800} height={400} className="h-[240px] w-full rounded-xl object-cover" />
+        <img src={lesson.imageUrl} alt={lesson.headline} className="h-[240px] w-full rounded-xl border border-black/10 object-cover" />
         <p className="mt-2 text-[11px] text-ink/50">Image: {lesson.imageCredit}</p>
 
         <div className="mt-8 space-y-5 text-base leading-[1.75] text-ink/90">
@@ -143,10 +142,14 @@ export default function HomePage() {
           <p className="mb-6 text-[11px] uppercase tracking-[0.12em] text-ink/55">Trending tags on ASU</p>
           <div className="flex flex-wrap items-end gap-x-5 gap-y-3">
             {tagCounts.map(([tag, count], idx) => {
-              const size = count >= 3 ? 'text-[26px]' : count === 2 ? 'text-[16px]' : 'text-[11px]';
-              const topColor = ['text-maroon', 'text-blue-600', 'text-purple-600', 'text-green-600'][idx] ?? 'text-ink/45';
+              const size = count >= 3 ? 'text-[34px]' : count === 2 ? 'text-[24px]' : 'text-[18px]';
+              const topColor = ['text-maroon', 'text-blue-600', 'text-purple-600', 'text-green-600'][idx] ?? 'text-ink/60';
               return (
-                <Link key={tag} href={`/topics?tag=${encodeURIComponent(tag)}`} className={`${size} ${topColor} font-medium`}>
+                <Link
+                  key={tag}
+                  href={`/topics?tag=${encodeURIComponent(tag)}`}
+                  className={`${size} ${topColor} rounded-full border border-black/10 bg-white px-3 py-1 font-medium leading-none`}
+                >
                   {tag}
                 </Link>
               );
@@ -163,12 +166,12 @@ export default function HomePage() {
               <Link
                 key={stat.category}
                 href={`/topics?category=${encodeURIComponent(stat.category)}`}
-                className="rounded-xl border border-black/10 p-5"
+                className="rounded-xl border border-black/10 bg-white p-5 transition-colors hover:border-maroon/40"
               >
-                <h3 className="text-lg font-medium">{stat.category}</h3>
-                <p className="mt-2 text-sm text-ink/55">
-                  {stat.total} lessons · {stat.newToday} new today
-                </p>
+                <div className="mb-4 h-1.5 w-14 rounded-full bg-maroon/80" />
+                <h3 className="text-xl font-medium">{stat.category}</h3>
+                <p className="mt-2 text-sm text-ink/60">{stat.total} lessons</p>
+                <p className="mt-1 text-sm text-ink/50">{stat.newToday} new today</p>
               </Link>
             ))}
           </div>
