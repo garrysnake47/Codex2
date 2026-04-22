@@ -13,7 +13,12 @@ type LessonCardProps = {
   showActions?: boolean;
 };
 
-const badgePalette = ['bg-maroon text-white', 'bg-blue-600 text-white', 'bg-emerald-600 text-white'];
+const statusBadgeClass = (badge: string) => {
+  if (badge.includes('Trending')) return 'bg-rose-600 text-white';
+  if (badge.includes('Popular')) return 'bg-blue-600 text-white';
+  if (badge.includes('New')) return 'bg-emerald-600 text-white';
+  return 'bg-amber-500 text-white';
+};
 
 export function LessonCard({
   lesson,
@@ -46,10 +51,10 @@ export function LessonCard({
             <img src={lesson.imageUrl} alt={lesson.headline} className={imageClasses} loading="lazy" />
           </Link>
           <div className="absolute left-3 top-3 flex flex-wrap gap-2">
-            {badges.slice(0, 1).map((badge, idx) => (
+            {badges.slice(0, 1).map((badge) => (
               <span
                 key={badge}
-                className={`rounded-full px-3 py-1 text-[11px] font-medium ${badgePalette[idx % badgePalette.length]}`}
+                className={`rounded-full px-3 py-1 text-[11px] font-medium ${statusBadgeClass(badge)}`}
               >
                 {badge}
               </span>

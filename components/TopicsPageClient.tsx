@@ -17,6 +17,17 @@ export default function TopicsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [savedIds, setSavedIds] = useState<string[]>([]);
 
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) setViewMode('grid');
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     const stored = localStorage.getItem(SAVED_IDS_KEY);
     setSavedIds(stored ? JSON.parse(stored) : []);
@@ -61,11 +72,12 @@ export default function TopicsPage() {
 
   const statusBadgeFor = (lessonId: string) => {
     const lesson = lessons.find((item) => item.id === lessonId);
-    if (!lesson) return ['⭐ Popular'];
+    if (!lesson) return ['✅ Recommended'];
 
     if (lesson.publishedAgo.includes('h') || lesson.publishedAgo.includes('d')) return ['🆕 New'];
     if (lesson.tags.some((tag) => trendingTags.includes(tag))) return ['🔥 Trending'];
-    return ['⭐ Popular'];
+    if (lesson.readTimeSeconds <= 33) return ['⭐ Popular'];
+    return ['✅ Recommended'];
   };
 
   return (
@@ -93,22 +105,24 @@ export default function TopicsPage() {
 
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm text-ink/60">{filteredLessons.length} lessons available</p>
-            <div className="flex gap-2">
+            <div className="hidden gap-2 lg:flex">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`rounded-full border px-4 py-1.5 text-sm ${
+                aria-label="Grid view"
+                className={`rounded-full border p-2 ${
                   viewMode === 'grid' ? 'border-maroon text-maroon' : 'border-black/15 text-ink/60'
                 }`}
               >
-                Grid
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg>
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`rounded-full border px-4 py-1.5 text-sm ${
+                aria-label="List view"
+                className={`rounded-full border p-2 ${
                   viewMode === 'list' ? 'border-maroon text-maroon' : 'border-black/15 text-ink/60'
                 }`}
               >
-                List
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor"><path d="M4 5h16v3H4zm0 5h16v3H4zm0 5h16v3H4z"/></svg>
               </button>
             </div>
           </div>
@@ -121,7 +135,7 @@ export default function TopicsPage() {
         </section>
 
         <section>
-          <div className={viewMode === 'grid' ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3' : 'space-y-4'}>
+          <div className={viewMode === 'list' ? 'space-y-4 lg:space-y-4' : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'}>
             {filteredLessons.map((lesson) => (
               <LessonCard
                 key={lesson.id}
