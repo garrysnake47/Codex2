@@ -10,6 +10,16 @@ import { categories, lessons } from '@/data/lessons';
 const SAVED_IDS_KEY = 'sparknotes_saved_ids';
 const SAVED_META_KEY = 'sparknotes_saved_meta';
 
+const topicIconStyles: Record<string, { bg: string; fg: string; icon: string }> = {
+  'Science & Tech': { bg: 'bg-rose-50', fg: 'text-rose-600', icon: '✶' },
+  Environment: { bg: 'bg-emerald-50', fg: 'text-emerald-600', icon: '❧' },
+  Health: { bg: 'bg-violet-50', fg: 'text-violet-600', icon: '♥' },
+  Humanities: { bg: 'bg-amber-50', fg: 'text-amber-600', icon: '▮▮' },
+  Business: { bg: 'bg-blue-50', fg: 'text-blue-600', icon: '▣' },
+  Campus: { bg: 'bg-pink-50', fg: 'text-pink-700', icon: '⌂' }
+};
+
+
 export default function HomePage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -48,10 +58,8 @@ export default function HomePage() {
     () =>
       categories.map((category) => {
         const group = lessons.filter((lessonItem) => lessonItem.category === category);
-        const newToday = group.filter(
-          (lessonItem) => lessonItem.publishedAgo.includes('h') || lessonItem.publishedAgo.includes('today')
-        ).length;
-        return { category, total: group.length, newToday };
+        const newThisWeek = group.filter((lessonItem) => lessonItem.publishedAgo.includes('h') || lessonItem.publishedAgo.includes('d')).length;
+        return { category, total: group.length, newThisWeek };
       }),
     []
   );
@@ -170,12 +178,20 @@ export default function HomePage() {
               <Link
                 key={stat.category}
                 href={`/topics?category=${encodeURIComponent(stat.category)}`}
-                className="rounded-xl border border-black/10 bg-white p-5 transition-colors hover:border-maroon/40"
+                className="rounded-2xl border border-black/10 bg-white p-5 transition-colors hover:border-maroon/40"
               >
-                <div className="mb-4 h-1.5 w-14 rounded-full bg-maroon/80" />
-                <h3 className="text-xl font-medium">{stat.category}</h3>
-                <p className="mt-2 text-sm text-ink/60">{stat.total} lessons</p>
-                <p className="mt-1 text-sm text-ink/50">{stat.newToday} new today</p>
+                <div className="flex items-center gap-4">
+                  <div
+                    className={`flex h-14 w-14 items-center justify-center rounded-2xl text-2xl font-medium ${topicIconStyles[stat.category].bg} ${topicIconStyles[stat.category].fg}`}
+                  >
+                    {topicIconStyles[stat.category].icon}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-medium leading-tight">{stat.category}</h3>
+                    <p className="mt-2 text-sm text-ink/60">{stat.total} lessons</p>
+                    <p className="mt-1 text-sm text-ink/50">{stat.newThisWeek} new this week</p>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
