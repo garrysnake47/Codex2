@@ -80,7 +80,7 @@ export const lessons: Lesson[] = [
       'The discovery shows how humanities research works like historical detective work, adding evidence piece by piece. New primary sources can reshape how major authors are taught and interpreted.',
     tags: ['#literature', '#austen', '#research'],
     readTimeSeconds: 29,
-    imageUrl: 'https://news.asu.edu/sites/default/files/2025-08/Looser_for%20ASUNews.jpg',
+    imageUrl: 'https://news.asu.edu/sites/default/files/styles/block_image_16_9_lge/public/20180410devoneylooser_06_1.jpg?itok=ASeCUXpg',
     imageCredit: 'ASU News',
     sourceUrl: 'https://news.asu.edu/20250826-arts-humanities-and-education-jane-austen-more-wild-people-realize-says-asu-professor',
     publishedAgo: '11y ago'
