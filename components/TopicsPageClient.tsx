@@ -8,16 +8,12 @@ import { categories, lessons, LessonCategory } from '@/data/lessons';
 
 const SAVED_IDS_KEY = 'sparknotes_saved_ids';
 
-type SignalFilter = 'All' | 'New' | 'Trending' | 'Popular';
-
-
 export default function TopicsPage() {
   const searchParams = useSearchParams();
   const tagFilter = searchParams.get('tag');
   const categoryFilter = searchParams.get('category') as LessonCategory | null;
 
   const [activeCategory, setActiveCategory] = useState<LessonCategory | 'All'>('All');
-  const [activeSignal, setActiveSignal] = useState<SignalFilter>('All');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [savedIds, setSavedIds] = useState<string[]>([]);
 
@@ -32,17 +28,6 @@ export default function TopicsPage() {
     }
   }, [categoryFilter]);
 
-  const tagCounts = useMemo(() => {
-    const map = new Map<string, number>();
-    lessons.flatMap((item) => item.tags).forEach((tag) => map.set(tag, (map.get(tag) ?? 0) + 1));
-    return map;
-  }, []);
-
-  const trendingTags = useMemo(
-    () => [...tagCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6).map(([tag]) => tag),
-    [tagCounts]
-  );
-
   const filteredLessons = useMemo(() => {
     let filtered = lessons;
 
@@ -54,20 +39,8 @@ export default function TopicsPage() {
       filtered = filtered.filter((lesson) => lesson.tags.includes(tagFilter));
     }
 
-    if (activeSignal === 'New') {
-      filtered = filtered.filter((lesson) => lesson.publishedAgo.includes('h') || lesson.publishedAgo.includes('d'));
-    }
-
-    if (activeSignal === 'Trending') {
-      filtered = filtered.filter((lesson) => lesson.tags.some((tag) => trendingTags.includes(tag)));
-    }
-
-    if (activeSignal === 'Popular') {
-      filtered = filtered.filter((lesson) => lesson.readTimeSeconds <= 34);
-    }
-
     return filtered;
-  }, [activeCategory, tagFilter, activeSignal, trendingTags]);
+  }, [activeCategory, tagFilter]);
 
   const toggleSave = (lessonId: string) => {
     const next = savedIds.includes(lessonId)
@@ -76,19 +49,6 @@ export default function TopicsPage() {
 
     setSavedIds(next);
     localStorage.setItem(SAVED_IDS_KEY, JSON.stringify(next));
-  };
-
-  const badgesFor = (lessonId: string) => {
-    const lesson = lessons.find((item) => item.id === lessonId);
-    if (!lesson) return [];
-
-    const badges: string[] = [];
-
-    if (lesson.publishedAgo.includes('h') || lesson.publishedAgo.includes('d')) badges.push('New');
-    if (lesson.tags.some((tag) => trendingTags.includes(tag))) badges.push('Trending');
-    if (lesson.readTimeSeconds <= 34) badges.push('Popular');
-
-    return badges;
   };
 
   return (
@@ -110,22 +70,6 @@ export default function TopicsPage() {
                 }`}
               >
                 {chip}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {(['All', 'New', 'Trending', 'Popular'] as const).map((signal) => (
-              <button
-                key={signal}
-                onClick={() => setActiveSignal(signal)}
-                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
-                  activeSignal === signal
-                    ? 'border-ink bg-ink text-white'
-                    : 'border-black/15 bg-white text-ink/70 hover:border-ink/40'
-                }`}
-              >
-                {signal}
               </button>
             ))}
           </div>
@@ -166,7 +110,7 @@ export default function TopicsPage() {
                 key={lesson.id}
                 lesson={lesson}
                 layout={viewMode}
-                badges={badgesFor(lesson.id)}
+                badges={lesson.tags}
                 isSaved={savedIds.includes(lesson.id)}
                 onToggleSave={toggleSave}
                 showActions
