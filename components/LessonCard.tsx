@@ -46,10 +46,10 @@ export function LessonCard({
             <img src={lesson.imageUrl} alt={lesson.headline} className={imageClasses} loading="lazy" />
           </Link>
           <div className="absolute left-3 top-3 flex flex-wrap gap-2">
-            {badges.slice(0, 3).map((badge, idx) => (
+            {badges.slice(0, 1).map((badge, idx) => (
               <span
                 key={badge}
-                className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${badgePalette[idx % badgePalette.length]}`}
+                className={`rounded-full px-3 py-1 text-[11px] font-medium ${badgePalette[idx % badgePalette.length]}`}
               >
                 {badge}
               </span>
@@ -70,13 +70,13 @@ export function LessonCard({
             <div className="flex flex-wrap gap-2 pt-1">
               <button
                 onClick={() => setPreviewOpen(true)}
-                className="rounded-full bg-maroon px-3 py-1.5 text-xs text-white"
+                className="rounded-full border border-maroon px-4 py-1.5 text-xs font-medium text-maroon"
               >
                 Preview
               </button>
               <button
                 onClick={() => onToggleSave?.(lesson.id)}
-                className="rounded-full bg-blue-600 px-3 py-1.5 text-xs text-white"
+                className="rounded-full border border-blue-600 px-4 py-1.5 text-xs font-medium text-blue-600"
               >
                 {isSaved ? 'Saved' : 'Save'}
               </button>
@@ -84,7 +84,7 @@ export function LessonCard({
                 href={lesson.sourceUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-ink px-3 py-1.5 text-xs text-white"
+                className="rounded-full border border-ink px-4 py-1.5 text-xs font-medium text-ink"
               >
                 Read full ↗
               </a>
@@ -94,18 +94,41 @@ export function LessonCard({
       </article>
 
       {previewOpen && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/45 p-4" role="dialog" aria-modal="true">
-          <div className="w-full max-w-xl rounded-xl bg-white p-6">
+        <div className="fixed inset-0 z-40 overflow-y-auto bg-black/45 p-4" role="dialog" aria-modal="true">
+          <div className="mx-auto w-full max-w-4xl rounded-xl bg-white p-6">
             <div className="mb-4 flex items-center justify-between">
-              <h4 className="text-lg font-medium">Lesson preview</h4>
-              <button onClick={() => setPreviewOpen(false)} className="rounded-full border border-black/15 px-3 py-1 text-xs">
+              <p className="text-[11px] uppercase tracking-[0.12em] text-ink/60">
+                {lesson.category} · {lesson.readTimeSeconds} sec read · {lesson.publishedAgo}
+              </p>
+              <button
+                onClick={() => setPreviewOpen(false)}
+                className="rounded-full border border-black/20 px-3 py-1 text-xs"
+              >
                 Close
               </button>
             </div>
-            <p className="text-sm uppercase tracking-[0.12em] text-maroon">{lesson.category}</p>
-            <h5 className="mt-2 text-xl font-medium leading-snug">{lesson.headline}</h5>
-            <p className="mt-4 text-sm leading-7 text-ink/80">{lesson.paragraph1}</p>
-            <p className="mt-3 text-sm leading-7 text-ink/80">{lesson.paragraph2}</p>
+
+            <h4 className="mb-6 text-[32px] font-medium leading-tight tracking-[-0.02em]">{lesson.headline}</h4>
+
+            <img
+              src={lesson.imageUrl}
+              alt={lesson.headline}
+              className="h-[300px] w-full rounded-xl border border-black/10 object-cover"
+            />
+            <p className="mt-2 text-[11px] text-ink/50">Image: {lesson.imageCredit}</p>
+
+            <div className="mt-7 space-y-5 text-base leading-[1.75] text-ink/90">
+              <p>{lesson.paragraph1}</p>
+              <p>{lesson.paragraph2}</p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {lesson.tags.map((tag) => (
+                <span key={tag} className="rounded-full border border-black/15 px-3 py-1 text-sm text-ink/70">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       )}

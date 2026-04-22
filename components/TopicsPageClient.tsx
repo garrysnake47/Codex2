@@ -28,6 +28,14 @@ export default function TopicsPage() {
     }
   }, [categoryFilter]);
 
+  const tagCounts = useMemo(() => {
+    const map = new Map<string, number>();
+    lessons.flatMap((item) => item.tags).forEach((tag) => map.set(tag, (map.get(tag) ?? 0) + 1));
+    return [...map.entries()].sort((a, b) => b[1] - a[1]);
+  }, []);
+
+  const trendingTags = useMemo(() => tagCounts.slice(0, 5).map(([tag]) => tag), [tagCounts]);
+
   const filteredLessons = useMemo(() => {
     let filtered = lessons;
 
@@ -49,6 +57,15 @@ export default function TopicsPage() {
 
     setSavedIds(next);
     localStorage.setItem(SAVED_IDS_KEY, JSON.stringify(next));
+  };
+
+  const statusBadgeFor = (lessonId: string) => {
+    const lesson = lessons.find((item) => item.id === lessonId);
+    if (!lesson) return ['⭐ Popular'];
+
+    if (lesson.publishedAgo.includes('h') || lesson.publishedAgo.includes('d')) return ['🆕 New'];
+    if (lesson.tags.some((tag) => trendingTags.includes(tag))) return ['🔥 Trending'];
+    return ['⭐ Popular'];
   };
 
   return (
@@ -110,7 +127,7 @@ export default function TopicsPage() {
                 key={lesson.id}
                 lesson={lesson}
                 layout={viewMode}
-                badges={lesson.tags}
+                badges={statusBadgeFor(lesson.id)}
                 isSaved={savedIds.includes(lesson.id)}
                 onToggleSave={toggleSave}
                 showActions
